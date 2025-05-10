@@ -20,10 +20,15 @@ prompt = PromptTemplate(
 )
 
 
+prompt2 = PromptTemplate(
+    template = 'Explain the joke in a simple way - {text}', 
+    input_variables = ['text']
+)
+
 parser = StrOutputParser()
 
 
-chain = RunnableSequence(prompt, model, parser)
+chain = RunnableSequence(prompt, model, parser, prompt2, model, parser)
 
 res = chain.invoke({'topic':'AI'})
 print(res)
