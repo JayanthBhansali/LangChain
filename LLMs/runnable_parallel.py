@@ -25,6 +25,9 @@ prompt2 = PromptTemplate(
 
 parser = StrOutputParser()
 
+# runs the chain in parallel
+# the ouput is a dictionary 
+# the keys are the names of the chains
 parallel_chain = RunnableParallel({
     "tweet": RunnableSequence(prompt1, model, parser),
     "linkedin": RunnableSequence(prompt2, model, parser)

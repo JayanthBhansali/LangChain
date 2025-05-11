@@ -27,7 +27,8 @@ prompt2 = PromptTemplate(
 
 parser = StrOutputParser()
 
-
+# runs the chain in a sequence
+# the ouput of one Runnable is the input of the next Runnable
 chain = RunnableSequence(prompt, model, parser, prompt2, model, parser)
 
 res = chain.invoke({'topic':'AI'})
